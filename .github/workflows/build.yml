@@ -5,7 +5,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: unzip -o "PcLauncher (1).zip"
+        with:
+          fetch-depth: 0
+      - run: |
+          Z=$(git log -1 --name-only --format= --diff-filter=AM -- '*.zip' | head -1)
+          echo "Usando: $Z"
+          unzip -o "$Z"
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
