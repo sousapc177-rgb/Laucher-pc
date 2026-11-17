@@ -1,2 +1,0 @@
-# Laucher-pc
-Ndjrk
